@@ -1,3 +1,6 @@
+import random
+import string
+
 class Menu:
     def __init__(self):
         self.text = None
@@ -33,11 +36,18 @@ class Menu:
         print("2. Сгенерировать данные случайным образом")
         input_choice = input("Выберите способ ввода: ")
         if input_choice == '1':
-            print("Ввод данных вручную (пока не реализовано)")
+            self.text = input("Введите текст: ")
         elif input_choice == '2':
-            print("Генерация данных случайным образом (пока не реализовано)")
+            self.text = self.generate_random_text()
+            print("Сгенерированный текст:", self.text)
         else:
             print("Неверный выбор. Попробуйте снова.")
+
+        self.result = None  # Сбрасываем результат при вводе новых данных
+
+    def generate_random_text(self, length=100):
+        words = [''.join(random.choices(string.ascii_lowercase, k=random.randint(3, 7))) for _ in range(length)]
+        return ' '.join(words)
 
     def execute_algorithm(self):
         print("Выполнение алгоритма (пока не реализовано)")
@@ -48,3 +58,4 @@ class Menu:
 if __name__ == "__main__":
     menu = Menu()
     menu.run()
+
