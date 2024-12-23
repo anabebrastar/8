@@ -50,12 +50,24 @@ class Menu:
         return ' '.join(words)
 
     def execute_algorithm(self):
-        print("Выполнение алгоритма (пока не реализовано)")
+        if self.text is None:
+            print("Сначала введите исходные данные.")
+        else:
+            self.result = self.reverse_words(self.text)
+            print("Алгоритм выполнен.")
+
+    def reverse_words(self, text):
+        words = text.split()
+        reversed_words = [word[::-1] for word in words]
+        return reversed_words
 
     def display_result(self):
-        print("Вывод результата (пока не реализовано)")
+        if self.result is None:
+            print("Сначала выполните алгоритм.")
+        else:
+            print("Результат:")
+            print(' '.join(self.result))
 
 if __name__ == "__main__":
     menu = Menu()
     menu.run()
-
